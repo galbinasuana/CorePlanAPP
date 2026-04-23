@@ -97,10 +97,6 @@ docker compose up --build
 
 ## 🎬 Demo
 
-Click below to view the demo video:
-
-[![Watch Demo](images/Arhitectura.png)](demo/Demo.mkv)
-
 The full demo is also available in:  
 demo/Demo.mkv
 
