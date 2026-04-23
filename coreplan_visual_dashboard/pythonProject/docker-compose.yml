@@ -1,0 +1,11 @@
+services:
+  dashboard:
+    build:
+      context: .
+    ports:
+      - "8050:8050"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on: []

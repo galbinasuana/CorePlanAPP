@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qPz/xEPEACIMGbBOs9mB3x8FCQb/8gh9O60ZR3xUkzElIqreal5amnfYKl3UliAA1dkqFT/kt2qBj8VqKr1s1A==",
+  "success": true,
+  "projectFilePath": "D:\\Ase\\Disertatie\\Aplicatie\\CorePlanApp\\ChatbotWebView\\ChatbotWebView.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\galbi\\.nuget\\packages\\microsoft.web.webview2\\1.0.1370.28\\microsoft.web.webview2.1.0.1370.28.nupkg.sha512"
+  ],
+  "logs": []
+}

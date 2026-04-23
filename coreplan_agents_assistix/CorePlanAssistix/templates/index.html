@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask Performance Agent</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .loading {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading video {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .loading p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="form-box">
+    <form id="question-form" method="POST" action="/results">
+        <h2>Ask the CorePlan AI Panel</h2>
+        <textarea name="question" required placeholder="Ex: Can you analyze the employee performance for the last 3 months?"></textarea>
+        <button type="submit">Generate Report</button>
+    </form>
+</div>
+
+<div class="loading" id="loading-section">
+    <video autoplay loop muted playsinline>
+        <source src="{{ url_for('static', filename='ai-loader.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p>AI agents are preparing your executive summary...</p>
+</div>
+
+<script>
+    document.getElementById("question-form").addEventListener("submit", function (e) {
+        document.getElementById("form-box").style.display = "none";
+        document.getElementById("loading-section").style.display = "flex";
+    });
+</script>
+
+</body>
+</html>

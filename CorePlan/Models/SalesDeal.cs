@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CorePlan.Models
+{
+    public class SalesDeal
+    {
+        public int DealId { get; set; }
+        public string Title { get; set; }
+        public DateTime DueDate { get; set; }
+    }
+}

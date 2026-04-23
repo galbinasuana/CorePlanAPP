@@ -1,0 +1,132 @@
+.employee-dashboard-container {
+    transform: scale(0.83);
+    transform-origin: top left;
+    width: 125%;
+    margin-left: -60px;
+    margin-top: -20px;
+}
+
+.home-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.home-card:hover {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+.home-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-reset {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.btn-reset:hover {
+    background-color: #5a6268;
+}
+
+.dash-table-container .dash-header {
+    color: #333 !important;
+    font-weight: bold !important;
+    background-color: #f0f2f5 !important;
+}
+
+.btn-apply {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-apply:hover {
+    background-color: #0069d9;
+}
+
+/* ============================= */
+/* COMPACT MODE DASHBOARD STYLING */
+/* ============================= */
+
+/* Reducem mărimea textelor din filtre *//*
+.filters-row label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.filters-row .dbc-col {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    margin-bottom: 6px !important;
+}
+
+*//* Slider mai subțire și mai scurt *//*
+.dash-slider-container .rc-slider {
+    height: 14px !important;
+    margin-top: -8px !important;
+    margin-bottom: -6px !important;
+}
+
+.rc-slider-handle {
+    width: 12px !important;
+    height: 12px !important;
+    margin-top: -5px !important;
+}
+
+.rc-slider-track {
+    height: 6px !important;
+}
+
+.rc-slider-rail {
+    height: 6px !important;
+}
+
+*//* Range text sub slider mai mic *//*
+.filter-range-label {
+    font-size: 11px;
+    text-align: center;
+    margin-top: -10px;
+    color: #666;
+}
+
+*//* Butoanele compacte *//*
+button {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+    height: auto !important;
+}
+
+h2, h3, h4 {
+    font-size: 16px !important;
+}
+
+.dash-table-container .dash-cell {
+    font-size: 13px !important;
+    padding: 4px 6px !important;
+}
+
+.dash-table-container .dash-header {
+    font-size: 14px !important;
+}*/

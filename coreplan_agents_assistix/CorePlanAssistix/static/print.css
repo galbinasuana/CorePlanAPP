@@ -1,0 +1,42 @@
+body {
+    background: white;
+    color: #000;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20mm;
+}
+
+.container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    width: auto;
+}
+
+.screen-only, .footer {
+    display: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.report-table th, .report-table td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: left;
+}
+
+.report-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+}

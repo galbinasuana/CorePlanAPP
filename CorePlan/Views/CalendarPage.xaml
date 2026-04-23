@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CorePlan.Views.CalendarPage"
+             x:Name="calendarPage"
+             BackgroundColor="#f4f7fc">
+
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="180,*">
+
+        <!-- Sidebar -->
+        <StackLayout Grid.RowSpan="2" BackgroundColor="#1A2A47"  Padding="20" Spacing="16">
+            <Label Text="CorePlan" FontSize="22" TextColor="White" FontAttributes="Bold"/>
+            <Label Text="Dashboard" TextColor="White">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDashboardTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Opportunities" TextColor="White">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnOpportunitiesTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="• Calendar" TextColor="#8ab4f8" FontAttributes="Bold"/>
+        </StackLayout>
+
+        <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,Auto"  Margin="0,15,30,0">
+            <HorizontalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                <Label Text="{Binding DepartmentDisplay}" FontSize="16" TextColor="#1A2A47" />
+                <Label Text="•" FontSize="16" TextColor="#1A2A47" />
+                <Label Text="Logout"
+                   FontSize="16"
+                   TextColor="#1A2A47"
+                   TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoutClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1" Grid.Column="1" Padding="20,0,20,0">
+            <Grid ColumnDefinitions="2*,1.2*" ColumnSpacing="30">
+                <!-- Left Column: Calendar + Activities -->
+                <VerticalStackLayout Grid.Column="0" Spacing="10">
+                    <!-- Titlu lună -->
+                    <!--<Label Text="{Binding CurrentMonthYear}" FontSize="20" TextColor="#1A2A47" FontAttributes="Bold" />-->
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="0,3">
+                        <Button Text="❮" 
+                            Grid.Column="0"
+                            Clicked="OnPreviousMonthClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#1A2A47"
+                            FontSize="20"
+                            Padding="0"
+                            WidthRequest="40"
+                            HeightRequest="40"/>
+
+                        <Label Text="{Binding CurrentMonthYear}"
+                           Grid.Column="1"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="20"
+                           TextColor="#1A2A47"
+                           FontAttributes="Bold"/>
+
+                        <Button Text="❯"
+                            Grid.Column="2"
+                            Clicked="OnNextMonthClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#1A2A47"
+                            FontSize="20"
+                            Padding="0"
+                            WidthRequest="40"
+                            HeightRequest="40"/>
+                    </Grid>
+
+                    <!-- Calendar -->
+                    <!-- Zilele săptămânii (fixe) -->
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" Padding="0">
+                        <Label Text="Mon" Grid.Column="0" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Tue" Grid.Column="1" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Wed" Grid.Column="2" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Thu" Grid.Column="3" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Fri" Grid.Column="4" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Sat" Grid.Column="5" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                        <Label Text="Sun" Grid.Column="6" HorizontalOptions="Center" TextColor="#1A2A47" FontAttributes="Bold"/>
+                    </Grid>
+
+                    <!-- Calendarul propriu-zis -->
+                    <CollectionView ItemsLayout="VerticalGrid, 7"
+                        ItemsSource="{Binding CalendarDays}"
+                        Margin="0,0"
+                        SelectionMode="None">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="White"
+                                   Stroke="#eaf0fb"
+                                   StrokeThickness="2"
+                                   StrokeShape="RoundRectangle 14"
+                                   Margin="4"
+                                   Padding="8"
+                                   HeightRequest="80">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference calendarPage}, Path=BindingContext.DayTappedCommand}"
+                                            CommandParameter="{Binding}" />
+                                    </Border.GestureRecognizers>
+
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="{Binding DayNumber}"
+                                           FontAttributes="Bold"
+                                           TextColor="#1A2A47"
+                                           FontSize="14">
+                                            <Label.Style>
+                                                <Style TargetType="Label">
+                                                    <Setter Property="TextColor" Value="#1A2A47" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding IsCurrentMonth}" Value="False">
+                                                            <Setter Property="TextColor" Value="#acacac" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Label.Style>
+                                        </Label>
+
+                                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding CalendarActivities}" Spacing="2">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Label Text="{Binding Title}"
+                                                       TextColor="{Binding Color}"
+                                                       FontSize="12"
+                                                       LineBreakMode="TailTruncation"
+                                                       MaxLines="1" />
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </VerticalStackLayout>
+                                    </VerticalStackLayout>
+
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                    <!-- Activities for Selected Day -->
+                    <Frame BackgroundColor="White" CornerRadius="12" Padding="10" HasShadow="True" Margin="0,5,0,10">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="{Binding SelectedDayTitle}" TextColor="#1A2A47" FontAttributes="Bold" FontSize="14" />
+                            <BoxView HeightRequest="1" Color="#cccccc" Margin="0,4" />
+                            <CollectionView ItemsSource="{Binding SelectedDayAppointments}" IsVisible="{Binding HasActivities}"
+                                    HeightRequest="130" Margin="0" 
+                                    VerticalOptions="FillAndExpand">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnDefinitions="*, Auto, Auto" Padding="0" Margin="0,0">
+                                            <Button Text="✏️"
+                                                    FontSize="13"
+                                                    Command="{Binding EditCommand}"
+                                                    BackgroundColor="Transparent"
+                                                    Grid.Column="1"
+                                                    VerticalOptions="Center"/>
+
+                                            <Button Text="🗑️"
+                                                    FontSize="13"
+                                                    Command="{Binding DeleteCommand}"
+                                                    BackgroundColor="Transparent"
+                                                    Grid.Column="2"
+                                                    VerticalOptions="Center"/>
+
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="4">
+                                                <Label Text="{Binding TimeRange, StringFormat='🕘 {0}'}"
+                                                       FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="Black"
+                                                       IsVisible="{Binding TimeRange, Converter={StaticResource IsNotEmptyConverter}}" />
+
+                                                <Label Text="{Binding ClientName, StringFormat='👤 {0}'}"
+                                                       FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="Black"
+                                                       IsVisible="{Binding ClientName, Converter={StaticResource IsNotEmptyConverter}}" />
+
+                                                <Label Text="{Binding Location, StringFormat='📍 {0}'}"
+                                                       FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="Black"
+                                                       IsVisible="{Binding Location, Converter={StaticResource IsNotEmptyConverter}}" />
+
+                                                <Label Text="{Binding Title, StringFormat='📝 {0}'}"
+                                                       FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="Black"
+                                                       IsVisible="{Binding Title, Converter={StaticResource IsNotEmptyConverter}}" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <Label Text="📝 You have no scheduled activities."
+                               FontSize="14"
+                               TextColor="Gray"
+                               VerticalOptions="Center"
+                               IsVisible="{Binding HasNoActivities}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Right Column: Add Activity Form -->
+                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" CornerRadius="12" Padding="20" HasShadow="True" VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="{Binding FormTitle}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1A2A47"
+                           Margin="0,0,0,10"/>
+
+                        <Label Text="Activity Title" TextColor="Black" FontSize="13"/>
+                        <Frame Padding="0" CornerRadius="6" BackgroundColor="#f5f6f8" HasShadow="False">
+                            <Entry Text="{Binding NewTitle}" Placeholder="e.g. Team Sync" BackgroundColor="Transparent" TextColor="#6E6E6E"/>
+                        </Frame>
+
+                        <Grid ColumnDefinitions="Auto, Auto" VerticalOptions="Center">
+                            <Label Text="Date" VerticalOptions="Center" TextColor="#1A2A47" FontSize="13" Margin="0,0,10,0"/>
+                            <Frame Grid.Column="1" Padding="0" CornerRadius="6" BackgroundColor="#f5f6f8" HasShadow="False" HeightRequest="45">
+                                <Grid>
+                                    <Entry x:Name="DateEntry"
+                                       Placeholder="Select a date"
+                                       TextColor="#6E6E6E"
+                                       IsReadOnly="True"
+                                       BackgroundColor="Transparent" 
+                                       Focused="DateEntry_Focused"/>
+
+                                    <DatePicker x:Name="HiddenDatePicker"
+                                        Opacity="0"
+                                        Date="{Binding SelectedDate, Mode=TwoWay}"
+                                        DateSelected="OnDateSelected" />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto, 120, Auto, 120" VerticalOptions="Center" Margin="0,10,0,0">
+                            <Label Text="Time"
+                               Grid.Column="0"
+                               VerticalOptions="Center"
+                               TextColor="Black"
+                               FontSize="13"
+                               Margin="0,0,10,0"/>
+
+                            <Frame Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="6"
+                               BackgroundColor="#f5f6f8"
+                               HasShadow="False"
+                               HeightRequest="45"
+                               VerticalOptions="Center">
+                                <Grid>
+                                    <Entry x:Name="StartTimeEntry"
+                                       Text="{Binding StartTimeString}"
+                                       Placeholder="Start"
+                                       IsReadOnly="True"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#6E6E6E"
+                                       VerticalOptions="Center"
+                                       Focused="StartTimeEntry_Focused"
+                                       HorizontalTextAlignment="Center"/>
+
+                                    <TimePicker x:Name="HiddenStartTimePicker"
+                                        Format="HH:mm"
+                                        Opacity="0"
+                                        />
+                                </Grid>
+                            </Frame>
+
+                            <Label Grid.Column="2"
+                               Text="–"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               FontSize="16"
+                               TextColor="#6E6E6E"
+                               Margin="8,0"/>
+
+                            <Frame Grid.Column="3"
+                               Padding="0"
+                               CornerRadius="6"
+                               BackgroundColor="#f5f6f8"
+                               HasShadow="False"
+                               HeightRequest="45"
+                               VerticalOptions="Center">
+                                <Grid>
+                                    <Entry x:Name="EndTimeEntry"
+                                   Text="{Binding EndTimeString}"
+                                   Placeholder="End"
+                                   IsReadOnly="True"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#6E6E6E"
+                                   VerticalOptions="Center"
+                                   Focused="EndTimeEntry_Focused"
+                                   HorizontalTextAlignment="Center"/>
+
+                                    <TimePicker x:Name="HiddenEndTimePicker"
+                                        Format="HH:mm"
+                                        Opacity="0"
+                                        />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+
+                        <Label Text="Location" TextColor="Black" FontSize="13"/>
+                        <Frame Padding="0" CornerRadius="6" BackgroundColor="#f5f6f8" HasShadow="False">
+                            <Entry Text="{Binding Location}" Placeholder="e.g. Meeting Room A" BackgroundColor="Transparent" TextColor="#6E6E6E"/>
+                        </Frame>
+
+                        <Grid ColumnDefinitions="Auto, *" VerticalOptions="Center" Margin="0,10,0,0">
+                            <Label Text="Client"
+                               VerticalOptions="Center"
+                               TextColor="Black"
+                               FontSize="13"
+                               Margin="0,0,10,0"/>
+
+                            <Frame Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="6"
+                               BackgroundColor="#f5f6f8"
+                               HasShadow="False"
+                               VerticalOptions="Center">
+                                <Grid>
+                                    <Label x:Name="ClientPlaceholder"
+                                       Text="Select Client"
+                                       TextColor="#6E6E6E"
+                                       Margin="10,0,0,0"
+                                       VerticalOptions="Center"
+                                       IsVisible="{Binding IsClientPlaceholderVisible}" />
+                                    <Picker x:Name="ClientPicker"
+                                        ItemsSource="{Binding AssignedClients}"
+                                        ItemDisplayBinding="{Binding ClientName}"
+                                        SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#6E6E6E"
+                                        TitleColor="#6E6E6E"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <!--SelectedIndexChanged="ClientPicker_SelectedIndexChanged"-->
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+
+                        <Grid ColumnDefinitions="Auto, *" VerticalOptions="Center" Margin="0,10,0,0">
+                            <Label Text="Color Tag"
+                               VerticalOptions="Center"
+                               TextColor="Black"
+                               FontSize="13"
+                               Margin="0,0,10,0"/>
+
+                            <Frame Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="6"
+                               BackgroundColor="#f5f6f8"
+                               HasShadow="False"
+                               VerticalOptions="Center">
+                                <Grid>
+                                    <Label x:Name="ColorTagPlaceholder"
+                                       Text="Select a tag"
+                                       TextColor="#6E6E6E"
+                                       Margin="10,0,0,0"
+                                       VerticalOptions="Center"
+                                       IsVisible="{Binding IsColorTagPlaceholderVisible}" />
+                                    <Picker x:Name="ColorTagPicker"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#6E6E6E"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="FillAndExpand"
+                                        ItemsSource="{Binding ColorTagList}" SelectedItem="{Binding SelectedColorTag}"
+                                        SelectedIndexChanged="ColorTagPicker_SelectedIndexChanged"
+                                        TitleColor="#6E6E6E">
+                                        <Picker.Items>
+                                            <x:String>Green – Internal</x:String>
+                                            <x:String>Blue – Client</x:String>
+                                            <x:String>Orange – Event</x:String>
+                                            <x:String>Red – Deadline</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+                        <Button Text="{Binding SubmitButtonText}"
+                            Command="{Binding AddOrUpdateAppointmentCommand}" 
+                            BackgroundColor="#1A2A47"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            Margin="0,10,0,0"
+                            HeightRequest="44"/>
+                        <!--Clicked="OnAddActivityClicked"-->
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

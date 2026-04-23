@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CorePlan.Views.ManagerDashboardPage"
+             BackgroundColor="#003366">
+
+    <Grid>
+        <Grid RowDefinitions="Auto,*">
+
+            <Grid Padding="20,10"
+              ColumnDefinitions="Auto,Auto,Auto"
+              HorizontalOptions="End"
+              VerticalOptions="Start">
+
+                <Label Grid.Column="0"
+                   Text="Management Panel"
+                   FontSize="18"
+                   FontFamily="Poppins"
+                   TextColor="#E4EDF7"
+                   VerticalOptions="Center" />
+
+                <Label Grid.Column="1"
+                   Text=" • "
+                   FontSize="18"
+                   TextColor="#E4EDF7"
+                   VerticalOptions="Center"
+                   Margin="5,0" />
+
+                <Label Grid.Column="2"
+                   Text="Logout"
+                   FontSize="18"
+                   TextColor="#E4EDF7"
+                   FontFamily="Poppins"
+                   VerticalOptions="Center"
+                   TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoutClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+
+
+
+            <Grid Grid.Row="1">
+
+                <WebView x:Name="CorePlanWeb"
+                         Source="http://localhost:8050/"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand" />
+
+                <ImageButton
+                    x:Name="AiButton"
+                    Source="aiassistant.png"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    BackgroundColor="White"
+                    BorderColor="#cccccc"
+                    BorderWidth="1"
+                    CornerRadius="15"
+                    Padding="5"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="20"
+                    Clicked="OnAiButtonClicked" />
+
+                <Grid x:Name="AiOverlay"
+                      BackgroundColor="#00000080"
+                      IsVisible="False">
+                    <Frame BackgroundColor="White"
+                           Margin="40"
+                           Padding="0"
+                           CornerRadius="15"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="600"
+                           WidthRequest="900"
+                           HasShadow="True">
+                        <Grid>
+                            <WebView x:Name="AiWebView"
+                                     Source="http://localhost:5001"
+                                     VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand" />
+                            <Button Text="✖"
+                                    BackgroundColor="Transparent"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    Margin="10"
+                                    Clicked="OnCloseAiOverlayClicked" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

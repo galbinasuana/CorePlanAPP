@@ -1,0 +1,119 @@
+.custom-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    margin-left: -60px;
+
+    transform: scale(0.83);
+    transform-origin: top left;
+    width: 125%;
+}
+
+.top-row {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.toolbar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top:-20px;
+}
+
+.toolbar-btn {
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 110px;
+    transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+    background-color: #eaf2ff;
+}
+
+.config-panel {
+    flex-grow: 1;
+    min-height: 160px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    font-style: italic;
+    color: #555;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.config-title {
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.config-description {
+    font-style: italic;
+    color: #555;
+}
+
+.canvas-wrapper {
+    position: relative;
+    border: 3px dashed #666;
+    border-radius: 20px;
+    padding: 25px 30px;
+    background-color: #fefefe;
+    min-height: 500px;
+    height: auto;
+}
+
+.canvas-title {
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.canvas-area {
+    color: #333;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: -30px;
+}
+
+.export-icon {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.export-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
+}
+
+.canvas-block {
+    padding: 12px;
+    background-color: #f7f9fb;
+    border: 1px solid #d0d7e2;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}

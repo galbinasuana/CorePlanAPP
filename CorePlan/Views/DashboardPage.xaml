@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="CorePlan.Views.DashboardPage"
+             BackgroundColor="#f4f7fc">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="35" HorizontalOptions="Center">
+            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" WidthRequest="1100">
+
+                <VerticalStackLayout Grid.RowSpan="1" VerticalOptions="Start" Margin="-200,0,0,0">
+                    <Label Text="{Binding WelcomeMessage}"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#1A2A47"
+                           FontFamily="Poppins" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="End" Spacing="2" Margin="0,0,-150,0">
+                    <Label Text="CorePlan"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           FontFamily="Poppins"
+                           TextColor="#1A2A47"
+                           HorizontalOptions="End" />
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="{Binding DepartmentDisplay}" 
+                               FontSize="15"
+                               FontFamily="Poppins"
+                               TextColor="#1A2A47" />
+
+                        <Label Text="•"
+                               FontSize="15"
+                               TextColor="#1A2A47" />
+
+                        <Label Text="Logout"
+                               FontSize="15"
+                               FontFamily="Poppins"
+                               TextColor="#1A2A47"
+                               TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLogoutClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Label Text="📊 Daily Overview"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#1A2A47"
+                   FontFamily="Poppins"
+                   Margin="0,10,0,0"
+                   HorizontalOptions="Start" />
+
+            <FlexLayout Direction="Row"
+                Wrap="Wrap"
+                JustifyContent="Center"
+                AlignItems="Start"
+                Margin="0,-10,0,0"
+                BindableLayout.ItemsSource="{Binding DashboardCards}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="20"
+                           Margin="12"
+                           WidthRequest="320"
+                           HeightRequest="180"
+                           CornerRadius="16"
+                           HasShadow="True"
+                           BackgroundColor="White"
+                           BorderColor="#e0e0e0">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="{Binding Title}"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="#1A2A47"
+                           FontFamily="Poppins"/>
+                                <Label Text="{Binding Content}"
+                           FontSize="14"
+                           TextColor="#333"
+                           LineBreakMode="WordWrap"
+                           LineHeight="1.3"
+                           FontFamily="Poppins"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+
+            <BoxView HeightRequest="1.8"
+                 WidthRequest="1300"
+                 Color="#E2E8F0"
+                 HorizontalOptions="Center"
+                 Margin="0,20"/>
+
+            <Grid ColumnDefinitions="*,Auto" WidthRequest="1100">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="📍 Quick Access"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           FontFamily="Poppins"
+                           TextColor="#1A2A47"
+                           Margin="0,0,0,8"/>
+
+                    <Label Text="Use the tools below to access your most important workspaces instantly."
+                           FontSize="14"
+                           TextColor="#4A5568"
+                           FontFamily="Poppins"/>
+                </VerticalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1" Spacing="16">
+                    <Button Text="📆 Go to Calendar"
+                            Clicked="OnCalendarTapped"
+                            BackgroundColor="#3b82f6"
+                            TextColor="White"
+                            FontSize="14"
+                            Padding="16,10"
+                            CornerRadius="16" />
+
+                    <Button Text="📊 Opportunities"
+                            Clicked="OnOpportunitiesTapped"
+                            BackgroundColor="#10b981"
+                            TextColor="White"
+                            FontSize="14"
+                            Padding="16,10"
+                            CornerRadius="16" />
+
+                    <Button Text="🤖 Open Chatbot"
+                            Clicked="OnChatbotTapped"
+                            BackgroundColor="#6366f1"
+                            TextColor="White"
+                            FontSize="14"
+                            Padding="16,10"
+                            CornerRadius="16" />
+                </HorizontalStackLayout>
+            </Grid>
+
+
+
+            <Label Text="© 2025 CorePlan – Empowering Sales Professionals"
+                   FontSize="12"
+                   HorizontalOptions="Center"
+                   TextColor="#888"
+                   Margin="0,100,0,10"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

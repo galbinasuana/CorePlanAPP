@@ -1,0 +1,138 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CorePlan.MainPage"
+             BackgroundColor="Transparent">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#e6ecf4" Offset="0.0" />
+            <GradientStop Color="#f8fbff" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20" Spacing="20">
+
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="60,40"
+               WidthRequest="640"
+               HasShadow="True">
+
+            <VerticalStackLayout Spacing="24">
+
+                <!-- Titlu -->
+                <Label Text="CorePlan – Secure Access Portal"
+                       HorizontalOptions="Center"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#1A2A47" />
+
+                <!-- Selectare rol -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Button x:Name="EmployeeButton"
+                            Text="Employee"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            WidthRequest="140"
+                            HeightRequest="44"
+                            BackgroundColor="#1A2A47"
+                            TextColor="White"
+                            BorderColor="#1A2A47"
+                            BorderWidth="2"
+                            CornerRadius="8"
+                            Clicked="OnEmployeeClicked"/>
+                    <Button x:Name="ManagerButton"
+                            Text="Manager"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            WidthRequest="140"
+                            HeightRequest="44"
+                            BackgroundColor="Transparent"
+                            TextColor="#1A2A47"
+                            BorderColor="#1A2A47"
+                            BorderWidth="2"
+                            CornerRadius="8"
+                            Clicked="OnManagerClicked"/>
+                </HorizontalStackLayout>
+
+                <!-- Username -->
+                <VerticalStackLayout>
+                    <Label Text="Username" FontSize="15" TextColor="#333" />
+                    <Frame Padding="0" HasShadow="False" BorderColor="#ccc" CornerRadius="8" BackgroundColor="White">
+                        <Entry x:Name="UsernameEntry"
+                           Placeholder="e.g. john.doe"
+                           FontSize="16"
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           HeightRequest="48"
+                           Margin="10,0" />
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Password -->
+                <VerticalStackLayout>
+                    <Label Text="Password" FontSize="15" TextColor="#333" />
+
+                    <Frame Padding="0" HasShadow="False" BorderColor="#ccc" CornerRadius="8">
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center" HeightRequest="48" BackgroundColor="White">
+                            <Entry x:Name="PasswordEntry"
+                               Grid.Column="0"
+                               IsPassword="True"
+                               Placeholder="••••••••"
+                               FontSize="16"
+                               BackgroundColor="White"
+                               TextColor="Black"
+                               Margin="10,0" />
+
+                            <ImageButton x:Name="TogglePasswordVisibilityButton"
+                                 Grid.Column="1"
+                                 Source="hide.png"
+                                 BackgroundColor="White"
+                                 Aspect="AspectFit"
+                                 Padding="10"
+                                 WidthRequest="40"
+                                 HeightRequest="40"
+                                 Clicked="OnTogglePasswordVisibilityClicked" />
+
+                        </Grid>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!--<VerticalStackLayout>
+                    <Label Text="Password" FontSize="15" TextColor="#333" />
+                    <Frame Padding="0" HasShadow="False" BorderColor="#ccc" CornerRadius="8">
+                        <Entry x:Name="PasswordEntry"
+                           IsPassword="True"
+                           Placeholder="••••••••"
+                           FontSize="16"
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           HeightRequest="48"
+                           Margin="0">
+                        </Entry>
+                        
+                    </Frame>
+                </VerticalStackLayout>-->
+                
+                <!-- Buton Login -->
+                <Button Text="Sign in to CorePlan"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="8"
+                        Clicked="OnSignInClicked"/>
+
+                <!-- Footer -->
+                <Label Text="© 2025 CorePlan. All rights reserved."
+                       FontSize="14"
+                       TextColor="#888"
+                       HorizontalOptions="Center"
+                       Margin="0,20,0,0"/>
+
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

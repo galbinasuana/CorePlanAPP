@@ -1,0 +1,20 @@
+{
+  "intents": [
+    {
+      "tag": "workflow",
+      "patterns": ["workflow", "daily workflow", "schedule", "appointments"]
+    },
+    {
+      "tag": "clients",
+      "patterns": ["clients", "client management", "prospects"]
+    },
+    {
+      "tag": "reports",
+      "patterns": ["reports", "sales report", "view progress"]
+    },
+    {
+      "tag": "notes",
+      "patterns": ["notes", "follow-up", "meeting notes"]
+    }
+  ]
+}

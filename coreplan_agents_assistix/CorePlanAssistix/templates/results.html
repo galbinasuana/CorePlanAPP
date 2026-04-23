@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CorePlan Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+</head>
+<body>
+
+<div id="content">
+    <div class="container">
+        <div class="header">
+            <h1>📊 Executive Summary</h1>
+            <p>Below is a quick summary from the active CorePlan AI agents:</p>
+        </div>
+
+        {% if 'performance' in active_agents %}
+        <div class="agent-summary">
+            <h2>🧠 Performance Analyst</h2>
+            {% if performance_summary %}
+                <p>{{ performance_summary|safe }}</p>
+                <a href="{{ url_for('full_performance', question=question, session_id=session_id) }}" class="btn">
+                    View Full Performance Report
+                </a>
+            {% else %}
+                <p><em>No performance insights were generated.</em></p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if 'financial' in active_agents %}
+        <div class="agent-summary">
+            <h2>💰 Financial Analyst</h2>
+            {% if financial_summary %}
+                <p>{{ financial_summary|safe }}</p>
+                <a href="{{ url_for('full_financial', question=question, session_id=session_id) }}" class="btn">
+                    View Full Financial Report
+                </a>
+            {% else %}
+                <p><em>No financial insights were generated.</em></p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if 'planning' in active_agents %}
+        <div class="agent-summary">
+            <h2>📅 Planning Analyst</h2>
+            {% if planning_summary %}
+                <p>{{ planning_summary|safe }}</p>
+                <a href="{{ url_for('full_planner', question=question, session_id=session_id) }}" class="btn">
+                    View Full Planning Report
+                </a>
+            {% else %}
+                <p><em>No planning insights were generated.</em></p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if 'reporting' in active_agents %}
+        <div class="agent-summary">
+            <h2>📄 Reporting Agent</h2>
+            {% if reporting_summary %}
+                <p>{{ reporting_summary|safe }}</p>
+                <a href="{{ url_for('full_reporter', question=question, session_id=session_id) }}" class="btn">
+                    View Full Reporting Dashboard
+                </a>
+            {% else %}
+                <p><em>No reporting data available.</em></p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if not active_agents %}
+        <div class="agent-summary">
+            <h2>⚠️ No Agent Activated</h2>
+            <p><em>Sorry, your question did not match any known AI agent domain.</em></p>
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            <a href="/" class="back-btn">⬅ Ask Another Question</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

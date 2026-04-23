@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='print.css') }}" media="print">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Performance Summary – {{ date }}</h1>
+    </div>
+
+    <div class="screen-only">
+        <button class="btn-export" onclick="window.print()">Export to PDF</button>
+    </div>
+
+    <div class="summary-content">
+        {{ summary_html|safe }}
+    </div>
+
+    <form action="/results" method="POST">
+        <input type="hidden" name="question" value="{{ question }}">
+        <button class="back-btn">⬅ Back to Main Dashboard</button>
+    </form>
+
+</div>
+
+</body>
+</html>

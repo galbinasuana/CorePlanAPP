@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskly Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_fixed_for_webview.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+</head>
+<body>
+<div class="chatbot-wrapper">
+    <button id="chatbot-toggler">
+        <img src="{{ url_for('static', filename='chatbot.png') }}" class="bot-toggle-icon" alt="Bot" id="bot-static">
+        <video class="bot-toggle-video" id="bot-video" autoplay muted loop playsinline>
+            <source src="{{ url_for('static', filename='chatbot.mp4') }}" type="video/mp4">
+        </video>
+        <span class="material-symbols-rounded" id="close-icon">close</span>
+    </button>
+
+    <div class="chatbot-popup">
+        <div class="chat-header">
+            <div class="header-info">
+                <img src="{{ url_for('static', filename='bot.png') }}" alt="Bot Logo" class="chatbot-logo" width="50" height="50">
+                <h2 class="logo-text">Chatbot</h2>
+            </div>
+            <div class="header-buttons">
+                <button id="history-button" class="material-symbols-outlined">manage_search</button>
+                <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
+            </div>
+        </div>
+
+        <div class="chat-body">
+<!--          <div class="message bot-message">-->
+<!--            <img src="{{ url_for('static', filename='bot.png') }}?v=2" alt="Bot Logo" class="bot-avatar" width="50" height="50">-->
+<!--            <div class="message-text">-->
+<!--              <p>👋 Welcome back, <b>Richard Hayes</b> (Sales Specialist)<br>-->
+<!--                I'm here to help you plan, follow up, and focus only on what really brings results – while I take care of the rest.<br>-->
+<!--                Let’s make your day easier, smarter, and fully optimized. What would you like to do now?</p>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>🧭 Daily Workflow</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="add">📅 Add Appointment</button>-->
+<!--                  <button class="option-button" data-action="view">📖 View Today</button>-->
+<!--                  <button class="option-button" data-action="reschedule">🔁 Reschedule</button>-->
+<!--                  <button class="option-button" data-action="delete">❌ Delete</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>👥 Client Management</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="add-client">➕ Add New Client</button>-->
+<!--                  <button class="option-button" data-action="view-clients">📇 View All Clients</button>-->
+<!--                  <button class="option-button" data-action="client-status">📊 Client Status</button>-->
+<!--                  <button class="option-button" data-action="follow-up">🔔 Schedule Follow-up</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>🔁 Smart Reminders</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="set-reminder">⏰ Set Reminder</button>-->
+<!--                  <button class="option-button" data-action="missed">📌 Missed Follow-ups</button>-->
+<!--                  <button class="option-button" data-action="this-week">🗓️ Weekly Agenda</button>-->
+<!--                  <button class="option-button" data-action="next">🔮 What’s Next?</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>📈 Sales Reports</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="today-stats">📍 Today’s Summary</button>-->
+<!--                  <button class="option-button" data-action="weekly-report">📅 Weekly Report</button>-->
+<!--                  <button class="option-button" data-action="monthly">📆 Monthly Performance</button>-->
+<!--                  <button class="option-button" data-action="compare">📊 Compare with Team</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>💡 Smart Suggestions</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="optimize-day">✨ Optimize Today</button>-->
+<!--                  <button class="option-button" data-action="group-meetings">👥 Group Meetings</button>-->
+<!--                  <button class="option-button" data-action="avoid-overlaps">🚫 Avoid Conflicts</button>-->
+<!--                  <button class="option-button" data-action="low-priority">⬇️ Skip Low Priority</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>🧾 Quick Notes & Follow-up</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="add-note">📝 Add Note</button>-->
+<!--                  <button class="option-button" data-action="view-notes">📖 View Notes</button>-->
+<!--                  <button class="option-button" data-action="note-after">📌 Note for Last Appointment</button>-->
+<!--                  <button class="option-button" data-action="summary">📋 Generate Summary</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="bot-section">-->
+<!--                <p><b>🛠️ Other Smart Actions</b></p>-->
+<!--                <div class="bot-options">-->
+<!--                  <button class="option-button" data-action="repeat-weekly">🔁 Repeat Weekly</button>-->
+<!--                  <button class="option-button" data-action="best-slot">🕹️ Best Time Slot</button>-->
+<!--                  <button class="option-button" data-action="focus-time">🧘 Set Focus Time</button>-->
+<!--                  <button class="option-button" data-action="inactive-clients">📦 Inactive Clients</button>-->
+<!--                  <button class="option-button" data-action="search-notes">🔍 Search Notes</button>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+            <p>👋 Welcome back, <b>Richard Hayes</b></p>
+
+            <p>I'm here to help you plan, follow up, and stay focused on what really moves the needle in your sales process.</p>
+
+            <p>Here’s what I can help you with today:</p>
+
+            <ul class="chat-list">
+              <li>👥 <b>Client Management</b> – view and update client records, follow up, or add new prospects</li>
+              <li>🔁 <b>Smart Reminders</b> – see missed follow-ups, set personal alerts, and plan ahead</li>
+              <li>📈 <b>Sales Reports</b> – view your progress for today, this week, or month</li>
+              <li>💡 <b>Smart Suggestions</b> – optimize your schedule, avoid conflicts, and focus on top priorities</li>
+              <li>🧾 <b>Notes & Follow-up</b> – add notes after meetings or review past conversations</li>
+              <li>🛠️ <b>Other Tools</b> – set focus time, track inactive clients, and more</li>
+            </ul>
+
+            <p><b>What would you like to start with?</b> Just type a keyword (like <i>workflow</i>, <i>clients</i>, or <i>reports</i>) or select a section below 👇</p>
+
+
+        </div>
+
+
+        <!-- Chatbot Footer -->
+        <div class="chat-footer">
+            <form action="#" class="chat-form">
+                <textarea placeholder="Message..." class="message-input" required></textarea>
+                <div class="chat-controls">
+                    <button type="button" id="emoji-picker" class="material-symbols-outlined">sentiment_satisfied</button>
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
+                        <img src="#">
+                        <button type="button" id="file-upload" class="material-symbols-rounded">attach_file</button>
+                        <button type="button" id="file-cancel" class="material-symbols-rounded">close</button>
+                    </div>
+                    <button type="submit" id="send-message" class="material-symbols-rounded">arrow_upward</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+</body>
+</html>

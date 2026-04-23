@@ -1,0 +1,82 @@
+.planning-dashboard-container {
+    transform: scale(0.83);
+    transform-origin: top left;
+    width: 125%;
+    margin-left: -60px;
+    margin-top: -20px;
+}
+
+.home-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.home-card:hover {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+.home-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-reset {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-reset:hover {
+    background-color: #5a6268;
+}
+
+.dash-table-container .dash-header {
+    color: #333 !important;
+    font-weight: bold !important;
+    background-color: #f0f2f5 !important;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.btn-apply {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: -30px;
+}
+
+.btn-apply:hover {
+    background-color: #0056b3;
+}
