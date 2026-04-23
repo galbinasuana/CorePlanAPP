@@ -16,7 +16,7 @@ The goal of the project is to provide a scalable and modular solution for managi
 The system is built using a modular architecture, where each component runs independently and is orchestrated using Docker.
 
 ### 📌 High-Level Architecture
-![Application Architecture](images/Arhitectura aplicatiei.png)
+![Application Architecture](images/Arhitectura.png)
 
 
 
@@ -27,7 +27,7 @@ The system is built using a modular architecture, where each component runs inde
 - Provides visual insights through charts and reports
 - Includes financial analysis, planning, and performance monitoring
 
-![Dashboard Architecture](images/Arhitectura dashboard.png)
+![Dashboard Architecture](images/Arhitectura_dashboard.png)
 
 
 
@@ -39,7 +39,7 @@ The system is built using a modular architecture, where each component runs inde
   - Resource Planning Agent
   - Reporting Agent
 
-![Multi-Agent Architecture](images/Arhitectura Sistemului Multi-Agent.png)
+![Multi-Agent Architecture](images/Arhitectura_Sistemului_MultiAgent.png)
 
 
 
@@ -48,7 +48,7 @@ The system is built using a modular architecture, where each component runs inde
 - Provides a conversational interface for interacting with the system
 - Uses NLP and backend APIs
 
-![Chatbot Architecture](images/Arhitectura Asistentului Virtual.png)
+![Chatbot Architecture](images/Arhitectura_Asistentului_Virtual.png)
 
 
 
@@ -99,7 +99,7 @@ docker compose up --build
 
 Click below to view the demo video:
 
-[![Watch Demo](images/Arhitectura aplicatiei.png)](demo/Demo.mkv)
+[![Watch Demo](images/Arhitectura.png)](demo/Demo.mkv)
 
 The full demo is also available in:  
 demo/Demo.mkv
