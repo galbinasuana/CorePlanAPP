@@ -9,7 +9,7 @@ The application is designed as a modular platform that combines dashboards, AI-b
 
 The goal of the project is to provide a scalable and modular solution for managing financial and organizational resources in small and medium-sized enterprises.
 
----
+
 
 ## 🧩 System Architecture
 
@@ -18,7 +18,7 @@ The system is built using a modular architecture, where each component runs inde
 ### 📌 High-Level Architecture
 ![Application Architecture](images/Arhitectura aplicatiei.png)
 
----
+
 
 ## 🧠 Core Components
 
@@ -29,7 +29,7 @@ The system is built using a modular architecture, where each component runs inde
 
 ![Dashboard Architecture](images/Arhitectura dashboard.png)
 
----
+
 
 ### 🤖 Assistix (Multi-Agent System)
 - AI-based decision support system
@@ -41,7 +41,7 @@ The system is built using a modular architecture, where each component runs inde
 
 ![Multi-Agent Architecture](images/Arhitectura Sistemului Multi-Agent.png)
 
----
+
 
 ### 💬 Taskly (Chatbot for Employees)
 - Designed for employees
@@ -50,7 +50,7 @@ The system is built using a modular architecture, where each component runs inde
 
 ![Chatbot Architecture](images/Arhitectura Asistentului Virtual.png)
 
----
+
 
 ## 🐳 Docker & Modularity
 
@@ -61,7 +61,7 @@ The application is containerized using Docker in order to:
 
 Each module runs independently and communicates through APIs.
 
----
+
 
 ## 🚀 Running the Application
 
@@ -70,7 +70,7 @@ Each module runs independently and communicates through APIs.
 cd coreplan_agents_assistix/CorePlanAssistix  
 docker compose up --build
 
----
+
 
 ### 🔹 Dashboard (Manager Interface)
 
@@ -81,19 +81,19 @@ docker run -p 8050:8050 coreplan-dashboard
 Access the dashboard at:  
 http://localhost:8050
 
----
+
 
 ### 🔹 Taskly (Chatbot for Employees)
 
 cd coreplan_chatbot_taskly/pythonProject  
 
----
+
 
 ## 🐳 Alternative: Run Full System with Docker
 
 docker compose up --build
 
----
+
 
 ## 🎬 Demo
 
@@ -104,7 +104,7 @@ Click below to view the demo video:
 The full demo is also available in:  
 demo/Demo.mkv
 
----
+
 
 ## 📸 Screenshots & Diagrams
 
@@ -112,7 +112,7 @@ All architecture diagrams and visual materials are available in:
 
 images/
 
----
+
 
 ## 🔐 Future Improvements
 
@@ -121,7 +121,7 @@ images/
 - Collaborative reporting system  
 - Advanced security (encryption, 2FA, activity logs)  
 
----
+
 
 ## 🎓 Academic Context
 
@@ -129,7 +129,7 @@ This project was developed as part of a dissertation:
 
 Integrated System for Financial Planning and Resource Management in Organizations
 
----
+
 
 ## 🧠 Key Concepts Demonstrated
 
