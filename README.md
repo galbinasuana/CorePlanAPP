@@ -3,7 +3,7 @@
 CorePlanAPP is a dissertation project that implements an integrated system for financial planning and resource management within organizations.  
 The application is designed as a modular platform that combines dashboards, AI-based analysis, and a multi-agent architecture.
 
----
+
 
 ## 🎯 Objective
 
